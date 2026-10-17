@@ -1,0 +1,41 @@
+{
+  "source_page": "https://abprojects.itch.io/the-last-page",
+  "images": [
+    {
+      "file": "01-cover.png",
+      "source": "https://img.itch.zone/aW1nLzI4Nzk2OTE1LnBuZw==/original/CC8bMJ.png",
+      "sha256": "c048705b97f7e5b4707718c9b6b8bee9f3fd11c4d742c80dbff9c9bdcad0a736",
+      "bytes": "188355"
+    },
+    {
+      "file": "02-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDgyNzcxNi8yODc5MTIwOS5wbmc=/original/1cuYIE.png",
+      "sha256": "452c3ad6462deaaf2b0d734b18a7b6092886c7a188be71ce1f8a82cacc887128",
+      "bytes": "226932"
+    },
+    {
+      "file": "03-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDgyNzcxNi8yODc5MTE4Ni5wbmc=/original/SvVgKL.png",
+      "sha256": "aee5fde7c94ce73dbd6c8e560e96488d8e34c051a1332b4e80e30ddaa4d8e5ab",
+      "bytes": "1074214"
+    },
+    {
+      "file": "04-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDgyNzcxNi8yODc5MTIyMC5wbmc=/original/UUtWqp.png",
+      "sha256": "3d4786243185d375f05bb3f48cc412bcfa664e8e458273c8c3652a03b20d708f",
+      "bytes": "643980"
+    },
+    {
+      "file": "05-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDgyNzcxNi8yODc5MTIzMy5wbmc=/original/TvwxWQ.png",
+      "sha256": "68d456775f2813b0adf9d00767f57de462159d0562b1a22f44976211c2873246",
+      "bytes": "1126250"
+    },
+    {
+      "file": "06-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDgyNzcxNi8yODc5MTI2My5wbmc=/original/842Vsq.png",
+      "sha256": "c2e44c732aa518e4581c7d17c9f88e6cb7a99ce595db372cc85797008f5264fa",
+      "bytes": "1025195"
+    }
+  ]
+}

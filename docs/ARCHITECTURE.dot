@@ -1,1 +1,51 @@
-digraph G { rankdir=TB; bgcolor="white"; pad="0.15"; nodesep="0.22"; ranksep="0.20"; node[shape=box,style="rounded,filled",color="#668397",fillcolor="#eef4f5",fontname="DejaVu Sans",fontsize=12,margin="0.20,0.13"]; edge[color="#487083",penwidth=1.5,arrowsize=0.65];n0[label="Controls / pause UI"];n1[label="Scenario generator"];n2[label="Region graph + route checks"];n3[label="Traversal + physics"];n4[label="Stage-based erasure timer"];n5[label="Scene + audio + camera"];n6[label="WebGL + DOM results"];n0->n1;n1->n2;n2->n3;n3->n4;n4->n5;n5->n6;}
+digraph G {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.18", nodesep="0.28", ranksep="0.5"];
+  node [shape=box, style="rounded,filled", color="#577387", fillcolor="#eef4f7", fontname="DejaVu Sans", fontsize=11, margin="0.18,0.12"];
+  edge [color="#4c7085", penwidth=1.4, arrowsize=0.7, fontname="DejaVu Sans", fontsize=10];
+
+  subgraph cluster_ui {
+    label="Input and interface"; color="#bfd3de"; style="rounded";
+    input [label="Input
+keyboard · mouse · gamepad · touch"];
+    ui [label="Menus / HUD / pause / results"];
+  }
+
+  subgraph cluster_challenge {
+    label="Challenge control"; color="#bfd3de"; style="rounded";
+    seed [label="Seeded scenario generation
+spawn, gate, route selection"];
+    run [label="Run state controller
+active / paused / finished"];
+    erasure [label="Erasure timer and stage updates"];
+  }
+
+  subgraph cluster_world {
+    label="Traversal systems"; color="#bfd3de"; style="rounded";
+    player [label="Player motion / traversal"];
+    route [label="Navigation space / region graph"];
+    hazards [label="Gate, hazards, erased regions"];
+  }
+
+  subgraph cluster_render {
+    label="Rendering and audio"; color="#bfd3de"; style="rounded";
+    scene [label="3D scene + camera"];
+    render [label="WebGL renderer
+active draw + idle governor"];
+    audio [label="Music / run audio / feedback"];
+  }
+
+  input -> run;
+  ui -> run [label="start / resume / settings"];
+  seed -> run;
+  run -> erasure;
+  run -> player;
+  erasure -> hazards;
+  player -> route;
+  route -> hazards;
+  player -> scene;
+  hazards -> scene;
+  scene -> render;
+  run -> audio;
+  run -> ui [label="timer / pause / result state"];
+}

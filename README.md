@@ -1,36 +1,64 @@
 # The Last Page
 
-A timed 3D exploration game in which a disappearing pencil world forces the player to navigate a route to the next page before erasure catches up.
+A timed 3D exploration and survival game in which a hand-drawn world is gradually erased. The player must navigate to the next page before time runs out and the route disappears.
 
-**[Play on itch.io](https://abprojects.itch.io/the-last-page)** · [Technical report](docs/TECHNICAL_REPORT.pdf) · [Report source](docs/TECHNICAL_REPORT.md) · [Architecture](docs/ARCHITECTURE.png)
+**Links:** [Play on itch.io](https://abprojects.itch.io/the-last-page) · [Technical report (PDF)](docs/TECHNICAL_REPORT.pdf) · [Technical report (Markdown)](docs/TECHNICAL_REPORT.md) · [Architecture diagram](docs/ARCHITECTURE.png)
 
-![Game preview](docs/screenshots/cover.png)
+## Gallery
 
-![System architecture](docs/ARCHITECTURE.png)
+Original images from the [official itch.io game page](https://abprojects.itch.io/the-last-page):
 
-## Run
+![Cover 1](docs/itch-gallery/01-cover.png)
 
-Open **`index.html`** in a modern desktop browser with WebGL support. The runtime is a single-file HTML5 build: bundled scripts, styles and assets stay embedded. The game can also be uploaded as an HTML5 ZIP to itch.io with `index.html` at the root.
+![Screenshot 2](docs/itch-gallery/02-screenshot.png)
 
-## Gameplay and controls
+![Screenshot 3](docs/itch-gallery/03-screenshot.png)
 
-Movement, camera, jump, slide and interact controls are shown in the in-game UI; desktop mouse and keyboard, gamepad processing and touch affordances exist in the code.
+![Screenshot 4](docs/itch-gallery/04-screenshot.png)
 
-## Repository guide
+![Screenshot 5](docs/itch-gallery/05-screenshot.png)
 
-- `index.html`: complete executable game. Do not separate or import runtime dependencies.
-- `docs/TECHNICAL_REPORT.pdf`: formal report covering architecture, algorithms, behavior changes and limits.
-- `docs/TECHNICAL_REPORT.md`: readable report source for GitHub.
-- `docs/ARCHITECTURE.png`: diagram of major subsystems.
-- `docs/RELEASE_NOTES.md`: precise change summary.
-- `docs/VALIDATION.md`: structured manual acceptance checks.
-- `docs/RELEASE_MANIFEST.json`: original and release SHA-256 hashes.
-- `tests/verify.mjs`: non-graphics regression and syntax smoke checks.
+![Screenshot 6](docs/itch-gallery/06-screenshot.png)
 
-## Verification and performance
+## What the game contains
 
-The updated build passed JavaScript syntax and document-integrity checks. An Xvfb-hosted Chromium session initialized WebGL and checked the visible menus. A timed run started; a before/after focus-loss test verified the timer freezes in the updated build. Render-submission scheduling was examined with the WebGL draw method stubbed; **no measured FPS or GPU speedup is claimed**. See the report for details and `docs/VALIDATION.md` for the essential browser tests before publishing to itch.io.
+- **Timed survival traversal:** find the exit gate before the world is erased.
+- **Scenario generation:** seeded spawn/gate routing with validation and route selection.
+- **Erasure system:** staged visual collapse tied to the run timer and route viability.
+- **3D movement and traversal:** player motion, camera control, and obstacle navigation.
+- **Self-contained distribution:** the playable build remains one `index.html` with embedded code and assets.
 
-## Source, screenshots and permissions
+## Controls
 
-The existing game page is [The Last Page on itch.io](https://abprojects.itch.io/the-last-page). The included cover screenshot was captured from this game in a software-WebGL browser. The itch.io page can supply additional screenshots once their exact image files are downloaded or verified. Third-party embedded engine licences remain with their original code. This repository does not include a new project licence; discuss licence terms before distributing for reuse.
+Movement, camera, jump, slide, and interact prompts are presented in the in-game UI. The shipped runtime contains keyboard/mouse handling, gamepad processing, and touch-oriented affordances.
+
+## Run locally
+
+Open **`index.html`** in a modern desktop browser with WebGL support. The same file can be uploaded to itch.io as an HTML5 project with `index.html` at the ZIP root.
+
+## Repository contents
+
+- `index.html` — the entire playable game.
+- `docs/TECHNICAL_REPORT.pdf` — formal engineering report.
+- `docs/TECHNICAL_REPORT.md` — GitHub-readable source of the report.
+- `docs/ARCHITECTURE.png` / `docs/ARCHITECTURE.dot` — subsystem diagram.
+- `docs/itch-gallery/` — the original itch.io gallery, with image-source records.
+- `docs/RELEASE_NOTES.md` — exact change summary for this maintenance pass.
+- `docs/VALIDATION.md` — browser acceptance checklist.
+- `docs/RELEASE_MANIFEST.json` — source/release hashes and release metadata.
+- `tests/verify.mjs` — self-contained packaging and syntax smoke checks.
+
+## Maintenance changes in this release
+
+This pass keeps the game structurally intact and does **not** split it into modules. Two targeted changes were made: **(1)** active runs now pause on browser blur/tab hide so the timer does not continue in the background, and **(2)** paused or terminal overlays render the 3D scene at most 10 times per second while hidden tabs skip rendering entirely. Scenario generation, traversal mechanics, erasure timing constants, and bundled dependencies remain on their original path.
+
+## Verification status
+
+- JavaScript syntax and packaging checks pass.
+- A WebGL-capable Chromium session loaded the menu and started a timed run without uncaught JavaScript errors.
+- The focus-loss fix was regression-tested by comparing timer behavior before and after a blur event.
+- Manual browser playtesting is still required before any production republish.
+
+## Notes on visuals and ownership
+
+The images in `docs/itch-gallery/` were downloaded from the official itch.io game page; their exact source URLs and SHA-256 checksums are in `docs/ITCH_GALLERY_SOURCES.json`. No fabricated marketing images were created. Third-party embedded engine/runtime notices remain in the shipped source. No additional repository-wide licence has been selected here.
