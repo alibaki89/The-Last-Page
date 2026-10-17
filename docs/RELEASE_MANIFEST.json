@@ -1,0 +1,18 @@
+{
+  "project": "The-Last-Page",
+  "source_basename": {
+    "Pencil-Cup": "index(20261017-012039).html",
+    "Pencil-Arena": "PencilArena(4).zip:index.html",
+    "The-Last-Page": "index406(1)(5).html"
+  },
+  "source_sha256": "4d8bc8fd8bea554e5926d94c6a1ca5b18f53ebcf215409c7e16a3b61224c3199",
+  "release_sha256": "2767fae4b72f96cdc96da1391fd123cf86beae4c104b4c9e60eedd96d3373c1d",
+  "original_bytes": 5044415,
+  "release_bytes": 5044995,
+  "changes": [
+    "Pause active navigation challenges on window blur or tab hide, preventing hidden-tab timer loss.",
+    "Reduce GPU renders during pause/end overlays to 10 FPS and skip them in hidden tabs; original active-play renderer unchanged.",
+    "Preserve the entire game (scripts, styles, vendor libraries and embedded assets) inside one index.html; no module split.",
+    "Do not alter game balance, physics parameters, core algorithms, or external dependencies."
+  ]
+}
